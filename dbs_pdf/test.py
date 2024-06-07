@@ -2,7 +2,7 @@ import pytesseract
 from PIL import Image
 import pdf2image
 
-images = pdf2image.convert_from_path('data/dbs_2022.pdf')
+images = pdf2image.convert_from_path('data/IMG_0533.pdf')
 
 text = ''
 
