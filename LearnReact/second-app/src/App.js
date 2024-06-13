@@ -1,25 +1,38 @@
-import logo from './logo.svg';
+
+import {useCallback, useMemo, useState} from "react";
 import './App.css';
+import { ChildArea } from "./components/ChildArea";
 
-function App() {
+export default function App() {
+  const [text, setText] = useState("");
+  const [open, setOpen] = useState(false);
+
+  const onChangeText = (e) => {
+    setText(e.target.value);
+  }
+
+  const onClickOpen = () => {
+    setOpen(!open)
+  };
+
+  const onClickClose = useCallback(() => {
+    return (
+      setOpen(false)
+    );
+  }, 
+[open]);
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <>
 
-export default App;
+    <input value={text} onChange={onChangeText}></input>
+    <br></br>
+    <br></br>
+    <button onClick = {onClickOpen}>Display</button>
+
+    <ChildArea open={open} onClickClose = {onClickClose}></ChildArea>
+
+    </>
+  );
+};
