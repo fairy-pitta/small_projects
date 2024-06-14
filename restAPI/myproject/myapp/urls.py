@@ -3,6 +3,6 @@ from rest_framework import routers
 from .views import ItemAPIView
 
 router = routers.DefaultRouter()
-router.register(r'item', ItemAPIView)
+router.register(r'', ItemAPIView)
 
 
