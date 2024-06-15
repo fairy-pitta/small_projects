@@ -4,17 +4,17 @@ from bs4 import BeautifulSoup
 import smtplib
 from email.mime.text import MIMEText
 from datetime import datetime
+from .local_settings import email, app_pw
 
 # 設定
 url = "https://kyosan.yodohanabi.com/products/detail/19"
 check_interval = 60 # チェック間隔（秒）
-email_from = "shunaruna@gmail.com"
-email_to = "shunaruna@gmail.com"
+email_from = email
+email_to = email
 smtp_server = "smtp.gmail.com"
 smtp_port = 587
-smtp_user = "shunaruna@gmail.com"
-smtp_password = "krxl jwht yruh cxes"
-
+smtp_user = email
+smtp_password = app_pw
 
 def check_stock():
     response = requests.get(url)
