@@ -1,18 +1,8 @@
 
-const API_BASE_URL = 'http://localhost:8000/api/';
-
-export const fetchMemos = async () => {
-    const response = await fetch(`${API_BASE_URL}memos/`);
-
-    if (!response.ok){
-        throw new Error('failed to fetch the data');
-    }
-
-    return await response.json();
-};
+const API_BASE_URL = 'http://localhost:8000/api/memos/';
 
 export const createMemo = async (title: string, content: string) => {
-    const response = await fetch(`${API_BASE_URL}memos/`,{
+    const response = await fetch(`${API_BASE_URL}`,{
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -27,19 +17,18 @@ export const createMemo = async (title: string, content: string) => {
     return await response.json()
 };
 
-export const deleteMemo = async (id : number) => {
-    const response = await fetch(`${API_BASE_URL}memos/${id}`, {
-        method: 'DELETE',
-    });
+export const fetchMemos = async () => {
+    const response = await fetch(`${API_BASE_URL}`);
 
     if (!response.ok){
-        throw new Error("failed to delete memo")
+        throw new Error('failed to fetch the data');
     }
 
+    return await response.json();
 };
 
 export const updateMemo = async (id: number, title: string, content: string) => {
-    const response = await fetch(`${API_BASE_URL}memos/${id}/`, {
+    const response = await fetch(`${API_BASE_URL}${id}/`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -51,3 +40,15 @@ export const updateMemo = async (id: number, title: string, content: string) => 
     }
     return await response.json();
 };
+
+export const deleteMemo = async (id : number) => {
+    const response = await fetch(`${API_BASE_URL}${id}`, {
+        method: 'DELETE',
+    });
+
+    if (!response.ok){
+        throw new Error("failed to delete memo")
+    }
+
+};
+
