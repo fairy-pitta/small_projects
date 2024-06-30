@@ -21,3 +21,10 @@ Disabled.args = {
   onClick: action('clicked'),
   disabled: true,
 };
+
+export const Loading = Template.bind({});
+Loading.args = {
+  label: 'Primary',
+  onClick: action('clicked'),
+  loading: true,
+};

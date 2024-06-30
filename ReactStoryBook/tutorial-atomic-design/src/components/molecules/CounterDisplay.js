@@ -4,12 +4,12 @@ import { PrimaryButton } from '../atoms/buttons/PrimaryButton';
 import { SecondaryButton } from '../atoms/buttons/SecondaryButton';
 import styles from './CounterDisplay.module.css';
 
-export const CounterDisplay = ({ count, increment, decrement, disabled }) => {
+export const CounterDisplay = ({ count, increment, decrement, disabled, loading }) => {
   return (
     <div className={styles.counterDisplay}>
       <h2>Counter: {count}</h2>
-      <PrimaryButton label="Increment" onClick={increment} disabled={disabled} />
-      <SecondaryButton label="Decrement" onClick={decrement} disabled={disabled} />
+      <PrimaryButton label="Increment" onClick={increment} disabled={disabled} loading={loading} />
+      <SecondaryButton label="Decrement" onClick={decrement} disabled={disabled} loading={loading} />
     </div>
   );
 };
@@ -19,8 +19,10 @@ CounterDisplay.propTypes = {
   increment: PropTypes.func.isRequired,
   decrement: PropTypes.func.isRequired,
   disabled: PropTypes.bool,
+  loading: PropTypes.bool,
 };
 
 CounterDisplay.defaultProps = {
   disabled: false,
+  loading: false,
 };
