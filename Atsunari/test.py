@@ -1,6 +1,10 @@
+total_seconds = int(input())
 
-x: float = 1.2 
+hours = total_seconds // 3600 
+left_secs = total_seconds % 3600 
 
-y: int = 400
+mins = left_secs // 60 
+secs = left_secs % 60 
 
-print(x*y)
+print(f"{hours}:{mins}:{secs}")
+
